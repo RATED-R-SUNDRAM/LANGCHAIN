@@ -1,0 +1,34 @@
+from langchain.text_splitter import CharacterTextSplitter , RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader('./29_jan_morning.pdf')
+
+doc= loader.load()
+
+
+"""TEXT SPLITTER"""
+
+text ="""Navjot Singh Sidhu, born on October 20, 1963, in Patiala, Punjab, carved a unique path as a cricketer, politician, and television personality. A top-order batsman, he debuted for India in 1983 but initially struggled, earning the nickname "Strokeless Wonder" after a lackluster start. However, Sidhu bounced back impressively during the 1987 World Cup, smashing four consecutive fifties and establishing himself as a formidable ODI player. Known for his aggressive batting, especially against spinners, he earned the moniker "Sixer Sidhu" for his ability to hit massive sixes, like the eight he struck in a 124-run knock against Sri Lanka in 1993-94. Over his 19-year cricketing career, Sidhu played 51 Tests and 136 ODIs, scoring over 7,000 international runs. \n
+
+After retiring from cricket in 1999, Sidhu transitioned into a colorful commentator, gaining fame for his witty one-liners, dubbed 'Sidhuisms.' Phrases like 'One who doesnt throw the dice can never expect to score a six' became iconic, though his commentary style—filled with metaphors and humor—divided opinions. Some found him entertaining, while others criticized his over-the-top delivery. He also ventured into television, becoming a judge and guest on comedy shows like The Great Indian Laughter Challenge and The Kapil Sharma Show, where his vibrant personality and turban-clad style won him a cult following. However, his TV stint wasn’t without controversy; in 2019, he was dropped from The Kapil Sharma Show after comments on a Kashmir attack were deemed unpatriotic
+
+Sidhu’s political journey has been equally eventful. Starting with the Bharatiya Janata Party (BJP) in 2004, he won the Amritsar Lok Sabha seat and held it until 2014. He resigned from the Rajya Sabha in 2016, quitting the BJP to form Awaaz-e-Punjab, before joining the Indian National Congress in 2017. Elected to the Punjab Legislative Assembly from Amritsar East, he served as Minister of Tourism and Cultural Affairs but faced turbulence, resigning as Punjab Congress President in 2021 amid internal party conflicts. His political career has been marred by legal issues, notably a 1988 road rage case that led to a one-year jail sentence in 2022, though he was released in April 2023 """
+
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+texts = text_splitter.split_text(text)
+#print(texts)
+
+""" DOCUMENT SPLITTER"""
+
+# text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+# texts = text_splitter.split_documents(doc)
+
+# print(texts[0])
+# print(len(texts))
+
+
+""" RECURSIVE TEXT SPLITTER """
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=0)
+texts = text_splitter.split_text(text)
+print(texts)
