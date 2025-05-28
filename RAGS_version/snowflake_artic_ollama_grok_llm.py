@@ -20,7 +20,7 @@ print(f"grok_api_key : {grok_api_key}")
 
 """ VARIABLES """
 embedding_hf = OllamaEmbeddings(model="snowflake-arctic-embed")  # Changed to Snowflake Arctic Embed
-grok_api= 'xai-zJh8aGZhkr7eZ3mIsFG7xtaGSDt7oRJce3PLHmshUG2qxaLLZ6yTq3QSz5VtecrQdbN6I2LYljrnHKLM'
+grok_api= grok_api_key
 llm = ChatOpenAI(
     model="grok-3-latest",
     temperature=0.2,
@@ -32,13 +32,13 @@ llm = ChatOpenAI(
     default_headers={"Authorization": f"Bearer {grok_api}"}
 )
 
-""" PDF LOADER """
-loader = PyPDFLoader('./29_jan_morning.pdf')
-doc = loader.load()
+# """ PDF LOADER """
+# loader = PyPDFLoader('./29_jan_morning.pdf')
+# doc = loader.load()
 
-""" SPLITTING DOCUMENTS INTO TEXTS """
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
-split = text_splitter.split_documents(doc)
+# """ SPLITTING DOCUMENTS INTO TEXTS """
+# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
+# split = text_splitter.split_documents(doc)
 
 """ VECTOR DATABASE SETUP """
 persist_directory = "./chroma_db_snowflake"  # New directory for Snowflake

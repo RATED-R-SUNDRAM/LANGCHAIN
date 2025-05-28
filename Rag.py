@@ -24,14 +24,14 @@ embedding_oai = OpenAIEmbeddings(model =  'text-embedding-3-large',dimensions= 7
 
 """  PDF LOADER"""
 
-loader = PyPDFLoader('./29_jan_morning.pdf')
+# loader = PyPDFLoader('./29_jan_morning.pdf')
 
-doc= loader.load()
+# doc= loader.load()
 
 
 """ SPLITTING DOCUMENTS INTO TEXTS"""
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
-split = text_splitter.split_documents(doc)
+# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
+# split = text_splitter.split_documents(doc)
 # print(f"Type of split : {type(split)}")
 # print(f"Length of split : {len(split)}")
 # print(f"First element of split : {split[0]}")

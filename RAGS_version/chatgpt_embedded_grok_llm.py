@@ -20,7 +20,7 @@ pinecone_api_key = os.getenv("PINECONE_API_KEY")
 openai_api_key = os.getenv("OPENAI_API_KEY")
 grok_api_key = os.getenv("GROK_API_KEY")
 print(f"grok_api_key : {grok_api_key}")
-grok_api = 'xai-zJh8aGZhkr7eZ3mIsFG7xtaGSDt7oRJce3PLHmshUG2qxaLLZ6yTq3QSz5VtecrQdbN6I2LYljrnHKLM'
+grok_api = grok_api_key
 
 """ VARIABLES """
 embedding_oai = OpenAIEmbeddings(model =  'text-embedding-3-large',dimensions= 784, openai_api_key=os.getenv("OPENAI_API_KEY"))
@@ -39,17 +39,17 @@ llm = ChatOpenAI(
 
 """  PDF LOADER"""
 
-loader = PyPDFLoader('./29_jan_morning.pdf')
+# loader = PyPDFLoader('./29_jan_morning.pdf')
 
-doc= loader.load()
+# doc= loader.load()
 
 
-""" SPLITTING DOCUMENTS INTO TEXTS"""
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
-split = text_splitter.split_documents(doc)
-print(f"Type of split : {type(split)}")
-print(f"Length of split : {len(split)}")
-# print(f"First element of split : {split[0]}")
+# """ SPLITTING DOCUMENTS INTO TEXTS"""
+# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
+# split = text_splitter.split_documents(doc)
+# print(f"Type of split : {type(split)}")
+# print(f"Length of split : {len(split)}")
+# # print(f"First element of split : {split[0]}")
 # print(f"Last element of split : {split[-1]}")
 
 

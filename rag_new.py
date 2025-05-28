@@ -26,7 +26,7 @@ print(f"grok_api_key : {grok_api_key}")
 """ VARIABLES """
 embedding_model_name = "sentence-transformers/all-MiniLM-L6-v2"
 embedding_hf = HuggingFaceEmbeddings(model_name=embedding_model_name)
-grok_api= 'xai-zJh8aGZhkr7eZ3mIsFG7xtaGSDt7oRJce3PLHmshUG2qxaLLZ6yTq3QSz5VtecrQdbN6I2LYljrnHKLM'
+
 llm = ChatOpenAI(
     model="grok-3-latest",  # Use the model that worked in test.py
     temperature=0.2,
@@ -35,20 +35,20 @@ llm = ChatOpenAI(
     api_key=grok_api_key,  # xAI API key
     base_url="https://api.x.ai/v1",  # xAI API base URL
     http_client=None,  # Optional: can specify a custom client if needed
-    default_headers={"Authorization": f"Bearer {grok_api}"}
+    default_headers={"Authorization": f"Bearer {grok_api_key}"}
 )
 
-"""  PDF LOADER"""
+# """  PDF LOADER"""
 
-loader = PyPDFLoader('./29_jan_morning.pdf')
+# loader = PyPDFLoader('./29_jan_morning.pdf')
 
-doc= loader.load()
+# doc= loader.load()
 
 
-""" SPLITTING DOCUMENTS INTO TEXTS"""
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
-split = text_splitter.split_documents(doc)
-# print(f"Type of split : {type(split)}")
+# """ SPLITTING DOCUMENTS INTO TEXTS"""
+# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=120)
+# split = text_splitter.split_documents(doc)
+# # print(f"Type of split : {type(split)}")
 # print(f"Length of split : {len(split)}")
 # print(f"First element of split : {split[0]}")
 # print(f"Last element of split : {split[-1]}")
